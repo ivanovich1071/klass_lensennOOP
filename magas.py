@@ -74,3 +74,39 @@ while True:
             print(f"Цена товара '{item}': {price}")
         else:
             print("Такого товара нет в ассортименте.")
+####
+while True:
+    action = input(
+        "Выберите действие: 'добавь товар', 'обнови цену', 'убери товар', 'запроси цену', 'вернуться к списку магазинов', 'выход': ")
+
+    if action == 'вернуться к списку магазинов':
+        print("Список магазинов:")
+        for i, store in enumerate(stores):
+            print(f"{i + 1}. {store.name} ({store.address})")
+    elif action == 'выход':
+        break
+    else:
+        if action == 'end':
+            break
+        elif action == 'добавь товар':
+            new_item = input("Введите наименование нового товара: ")
+            new_price = float(input("Введите цену нового товара: "))
+            chosen_store.add_item(new_item, new_price)
+        elif action == 'обнови цену':
+            item = input("Введите наименование товара для обновления цены: ")
+            new_price = float(input("Введите новую цену: "))
+            chosen_store.update_price(item, new_price)
+        elif action == 'убери товар':
+            item = input("Введите название товара для удаления: ")
+            chosen_store.remove_item(item)
+        elif action == 'запроси цену':
+            item = input("Введите название товара для запроса цены: ")
+            price = chosen_store.get_price(item)
+            if price is not None:
+                print(f"Цена товара '{item}': {price}")
+            else:
+                print("Такого товара нет в ассортименте.")
+
+        print(f"Обновленный список товаров в магазине {chosen_store.name}:")
+        for item, price in chosen_store.items.items():
+            print(f"{item}: {price}")
