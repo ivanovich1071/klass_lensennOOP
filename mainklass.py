@@ -54,7 +54,7 @@ while True:
 
     # Вывод списков задач каждый час
     import time
-    hour = 300  #  в секундах(для примерф 5 минут)
+    hour = 4800  #  в секундах(для примерф 5 минут)
     while True:
         print("\n---" + time.strftime("%H:%M:%S") + "---")
         task_manager.list_current_tasks(include_completed=True)
